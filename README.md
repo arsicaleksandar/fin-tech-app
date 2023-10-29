@@ -100,7 +100,7 @@ php artisan migrate:fresh --seed
 
 
 > **Note**
->if there is problem with vita package run following commands in docker container:
+>if there is problem with Vite manifest package run following commands in docker container:
 >```bash
 >npm install
 >```
