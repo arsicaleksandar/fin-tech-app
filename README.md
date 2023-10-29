@@ -1,66 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Key Features
+* Application have two groups of users: Authenticated users and Guests.
+* Guests
+  - Guests can only browse funds by name,WKN and ISIN.
+  - Guests also can search but only by fields above.
+* Authenticate users:
+  - Can browse funds like guests but additionally with Category name, Sub Category name.
+  - Authenticate users can search funds by name,WKN,ISIN.
+  - Authenticate users can filter funds by Category, Sub Category.
+  - Download funds in PDF, XLSX, XML or in ZIP with all three files.
+  - Authenticate user can view all his/her favorites funds.
+  - Remove favorite funds.
+  - Add funds to favorite.
+  - Also download favorite fund/funds.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## How To Use
 
-## About Laravel
+Below are commands and Tech Stack that are used in this project.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* Versions:
+  - Laravel Framework 10.29.0
+  - PHP 8.2.12
+  - Docker Desktop 4.25.0
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Install WSL2, Docker desktop 
+* enable wsl in Docker Desktop
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Run Docker Desktop
 
-## Learning Laravel
+Open command prompt(or Terminal) and type command: 
+```bash
+wsl
+```
+After successful command, now you can create new project with laravel commands below.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Create new project with laravel command:
+```bash
+curl -s "https://laravel.build/fin-tech?with=mysql,redis" | bash
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Position in root folder of new project
+```bash
+cd fin-tech
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+*After that its time to get project from github:
+```bash
+git init
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+*Set remote url:
+```bash
+git remote add origin https://github.com/arsicaleksandar/fin-tech-app.git
+```
+*Get all changes from remote branch into local with overidding local files:
+```bash
+git fetch --all
+git reset --hard origin/master
+```
 
-### Premium Partners
+*After that launch command and start project:
+```bash
+./vendor/bin/sail up
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+*After successfull start, opet new terminal and type commands:
+```bash
+wsl
+```
 
-## Contributing
+*Access container where application is running, ALL COMMANDS BELOW ARE RUN IN THIS CONTAINER:
+```bash
+docker container exec -it fin-tech-laravel bash
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+*Install all packages neccessary for projects
+```bash
+composer install
+```
 
-## Code of Conduct
+*Run migrations and seeders
+```bash
+php artisan migrate:fresh --seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* After that we need to re-run over application:
+* Go on terminal tab where we run command ./vendor/bin/sail up, press ctrl + C
+* After that go on Docker Desktop and delete all Containers in Containers tab
 
-## Security Vulnerabilities
+*Now run again command:
+```bash
+./vendor/bin/sail up
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+*Access application on url: 
 
-## License
+[localhost](http://localhost/)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+> **Note**
+>if there is problem with vita package run following commands in docker container:
+>```bash
+>npm install
+>```
+>You need to run this command all the time if this error shows up:
+>```bash
+>npm run dev 
+>```
+
+* To login like user you need to access phpmyadmin:
+  - url: [localhost:8001](http://localhost:8001/)
+  - user: sail
+  - pw: password
+
+
+* On login page in application you need to use email from database:
+  - In database fun_tech you will find table users
+  - Use any email from users
+
+> **Note**
+> PASSWORD for application is : password
+
+
+## Screenshots
+
+* View of guest
+
+![image](https://github.com/arsicaleksandar/fin-tech-app/assets/33933095/8fa6c22b-84e0-404d-96b9-e36f6adf6285)
+
+* On Top right corner clicking on Log in form pops up
+
+![image](https://github.com/arsicaleksandar/fin-tech-app/assets/33933095/b8a6dcd4-3fa3-4c09-b09c-500d75727220)
+
+* After successfull login, authorized user can browse/download Funds or download zip pressing the button Download All under table of data
+
+  ![image](https://github.com/arsicaleksandar/fin-tech-app/assets/33933095/28bc0a54-d30b-4c3d-8f0e-dee3ea4ad01a)
+
+* On top right corner user can see My funds and browse/download or remove them from favorites
+![image](https://github.com/arsicaleksandar/fin-tech-app/assets/33933095/74124c22-7265-409b-921d-f3dadbe3adac)
+
+* On button Add new fund, all funds that are not user's favorites shows
+  ![image](https://github.com/arsicaleksandar/fin-tech-app/assets/33933095/c05c8df2-16d6-42fc-bc4f-8cb840e74159)
+
+
+
+
+
