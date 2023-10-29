@@ -1,0 +1,29 @@
+.btn1{
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #cfa671;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+.search{
+     padding: 10px;
+     font-size: 17px;
+     float: left;
+     width: 50%;
+     margin-bottom: 20px;
+ }
+
+ .table-hover-custom > tbody > tr:hover {
+    background-color: #181e33;
+  }
+
+.custom-margin {
+    margin-right: 150px;
+}
+.add-new-fund{
+    margin-bottom:10px;
+}

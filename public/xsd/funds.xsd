@@ -1,0 +1,21 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="Funds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Fund" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string"/>
+              <xs:element name="ISIN" type="xs:string"/>
+              <xs:element name="WKN" type="xs:string"/>
+              <xs:element name="Category" type="xs:string"/>
+              <xs:element name="SubCategory" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
